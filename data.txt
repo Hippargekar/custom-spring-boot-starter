@@ -1,0 +1,16 @@
+https://blog.ttulka.com/spring-boot-custom-components/
+Spring Boot takes an opinionated view of the Spring platform and third-party libraries.
+
+
+https://blog.csdn.net/weixin_64021358/article/details/135327095
+https://cloud.tencent.com/developer/article/2379336
+https://cloud.tencent.com/developer/article/2292258
+https://habr.com/ru/articles/806217/
+
+<dependency>
+	<groupId>com.ravan</groupId>
+	<artifactId>custom-spring-boot-starter</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+</dependency>
+
+//starter.sms.type=tx
