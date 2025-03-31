@@ -4,27 +4,26 @@ import com.ravan.starter.enums.SmsTypeEnum;
 import com.ravan.starter.exception.InvalidSmsTypeException;
 import com.ravan.starter.properties.ExternalSmsProperties;
 import com.ravan.starter.service.SmsService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
 
-@Component  // Register as a Spring-managed bean
+import java.util.Map;
+
 public class SmsTemplate {
-    private final ExternalSmsProperties smsProperties;
-    private final ApplicationContext context;
 
-    @Autowired
-    public SmsTemplate(ExternalSmsProperties smsProperties, ApplicationContext context) {
+    private final ExternalSmsProperties smsProperties;
+    private final Map<String, SmsService> services;
+
+    public SmsTemplate(ExternalSmsProperties smsProperties, Map<String, SmsService> services) {
         this.smsProperties = smsProperties;
-        this.context = context;
+        this.services = services;
     }
 
     public String sendSms(String fromPhone,String toPhone,String content){
         String type = smsProperties.getType();
-        if (!SmsTypeEnum.isValid(type)) {
+        SmsService smsService = services.get(type);
+        if (smsService == null) {
+           // logger.error("Invalid SMS type: {}", type);
             throw new InvalidSmsTypeException("Invalid SMS type: " + type, type);
         }
-        SmsService smsService = (SmsService)context.getBean(type);
         return smsService.send(fromPhone,toPhone,content);
     }
 
