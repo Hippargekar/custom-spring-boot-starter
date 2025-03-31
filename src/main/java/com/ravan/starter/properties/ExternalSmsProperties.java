@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @ConfigurationProperties(prefix = "starter.sms")//starter.sms.type=
-@Component
+//@Component
 public class ExternalSmsProperties {
     private String type;
 

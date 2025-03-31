@@ -1,5 +1,6 @@
 package com.ravan.starter.service.impl;
 
+import com.ravan.starter.dto.SmsMessage;
 import com.ravan.starter.service.SmsService;
 import org.springframework.stereotype.Service;
 
@@ -7,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class AxCloudSmsServiceImpl implements SmsService {
 
     @Override
-    public String send(String fromPhone, String toPhone, String content) {
+    public String sendSms(SmsMessage smsMessage) {
         return "AxCloudSmsServiceImpl";
     }
 }

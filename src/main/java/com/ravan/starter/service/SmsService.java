@@ -1,5 +1,7 @@
 package com.ravan.starter.service;
 
+import com.ravan.starter.dto.SmsMessage;
+
 public interface SmsService {
-    String send(String fromPhone,String toPhone,String content);
+    String sendSms(SmsMessage smsMessage);
 }
