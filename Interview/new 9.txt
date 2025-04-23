@@ -1,0 +1,304 @@
+RestClient restClient = RestClient.builder()
+    .requestFactory(factory -> factory
+        .filter((request, next) -> next.exchange(request)
+            .retryWhen(Retry.backoff(3, Duration.ofMillis(500))
+                .filter(throwable -> throwable instanceof WebClientResponseException &&
+                    ((WebClientResponseException) throwable).getStatusCode().is5xxServerError()))))
+    .build();
+
+
+
+HttpClient httpClient = HttpClient.create()
+    .responseTimeout(Duration.ofSeconds(5)) // Read timeout
+    .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 3000); // Connection timeout
+ClientHttpConnector connector = new ReactorClientHttpConnector(httpClient);
+RestClient restClient = RestClient.builder()
+    .requestFactory(WebClientAdapter.forClient(
+        WebClient.builder().clientConnector(connector).build()))
+    .build();
+
+
+Combine Retry + Timeout + Proxy
+..................................................................
+HttpClient httpClient = HttpClient.create()
+    .responseTimeout(Duration.ofSeconds(4))
+    .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 3000)
+    .proxy(proxy -> proxy
+        .type(ProxyProvider.Proxy.HTTP)
+        .host("proxy.myorg.com")
+        .port(8888));
+WebClient webClient = WebClient.builder()
+    .clientConnector(new ReactorClientHttpConnector(httpClient))
+    .filter((request, next) -> next.exchange(request)
+        .retryWhen(Retry.fixedDelay(2, Duration.ofSeconds(1))))
+    .build();
+RestClient restClient = RestClient.builder()
+    .requestFactory(WebClientAdapter.forClient(webClient))
+    .build();
+	
+
+
+
+
+
+public class OrderService {
+    private final ExecutorService executor = Executors.newFixedThreadPool(100); // tune this
+    private final OrderRepository repository = new OrderRepository();
+    private final ThirdPartyApiClient apiClient = new ThirdPartyApiClient();
+    private final Semaphore semaphore = new Semaphore(1000); // throttle active tasks
+
+    public void processAllPendingOrders() {
+        int page = 0;
+        int pageSize = 1000;
+        List<Order> batch;
+
+        do {
+            batch = repository.getPendingOrders(page, pageSize);
+            for (Order odr : batch) {
+                try {
+                    semaphore.acquire(); // limit concurrency
+                    UpdateTask task = new UpdateTask(odr, repository, apiClient, semaphore);
+                    CompletableFuture.runAsync(task, executor);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    System.err.println("Failed to acquire semaphore for Order " + odr.getId());
+                }
+            }
+            page++;
+        } while (!batch.isEmpty());
+
+		executor.shutdown(); // Initiate shutdown
+		try {
+			if (!executor.awaitTermination(60, TimeUnit.MINUTES)) {
+				System.err.println("Timed out waiting for tasks to finish.");
+				executor.shutdownNow();
+			}
+		} catch (InterruptedException e) {
+			executor.shutdownNow();
+		}
+    }
+}
+
+public class UpdateTask implements Runnable {
+    private final Order order;
+    private final OrderRepository repository;
+    private final ThirdPartyApiClient apiClient;
+    private final Semaphore semaphore;
+
+    public UpdateTask(Order order, OrderRepository repository, ThirdPartyApiClient apiClient, Semaphore semaphore) {
+        this.order = order;
+        this.repository = repository;
+        this.apiClient = apiClient;
+        this.semaphore = semaphore;
+    }
+
+    @Override
+    public void run() {
+        try {
+            System.out.println("Processing order: " + order.getId());
+            boolean success = apiClient.call(order);
+            if (success) {
+                repository.markOrderAsSuccess(order.getId());
+            } else {
+			   // Handle failure logic here
+			}
+        } catch (Exception e) {
+            System.err.println("Error processing order " + order.getId());
+            e.printStackTrace();
+        } finally {
+            semaphore.release();
+        }
+    }
+}
+
+public class ThirdPartyApiClient {
+    public boolean call(Order order) {
+        try {
+            Thread.sleep(50); // simulate delay
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+			return false;
+        }
+        System.out.println("API called for Order ID: " + order.getId());
+        return true; // simulate success
+    }
+}
+
+public class OrderRepository {
+    public List<Order> getPendingOrders(int page, int pageSize) {
+        int start = page * pageSize;
+        int end = Math.min(start + pageSize, 1_000_000); // simulate 1 million orders
+
+        if (start >= end) return Collections.emptyList();
+
+        List<Order> batch = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            batch.add(new Order(i, "PENDING"));
+        }
+        return batch;
+    }
+
+    public void markOrderAsSuccess(String orderId) {
+        System.out.println("Order " + orderId + " marked as success.");
+    }
+	
+	 public void markOrderAsFailed(String orderId) {
+        System.out.println("Order " + orderId + " marked as failed.");
+    }
+}
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class ThirdPartyApiClient {
+
+    private static final int MAX_RETRIES = 3;
+    private static final Logger logger = LoggerFactory.getLogger(ThirdPartyApiClient.class);
+
+    // Initial backoff time in milliseconds (e.g., 100ms)
+    private static final long INITIAL_BACKOFF_TIME = 100;
+
+    public boolean call(Order order) {
+        int retryCount = 0;
+        long backoffTime = INITIAL_BACKOFF_TIME;
+
+        while (retryCount < MAX_RETRIES) {
+            try {
+                // Simulate API delay
+                Thread.sleep(50); // Simulated delay for API call
+                
+                // Simulate random failures for demonstration (e.g., 30% chance of failure)
+                if (Math.random() < 0.3) {
+                    throw new RuntimeException("Simulated API failure");
+                }
+
+                logger.info("API successfully called for Order ID: " + order.getId());
+                return true; // Simulate success
+
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();  // Restore interrupt status
+                logger.error("API call was interrupted for Order ID: " + order.getId(), e);
+                return false;
+            } catch (Exception e) {
+                retryCount++;
+                logger.error("Error calling API for Order ID: " + order.getId() + ". Attempt " + retryCount + " of " + MAX_RETRIES, e);
+                
+                if (retryCount == MAX_RETRIES) {
+                    logger.error("Max retries reached. Giving up on Order ID: " + order.getId());
+                    return false;
+                }
+
+                // Exponential backoff logic: double the backoff time after each failure
+                try {
+                    // Optionally, add a bit of randomness to avoid retries happening at exactly the same time
+                    long randomFactor = (long) (Math.random() * 100); // Adding some randomness (e.g., up to 100ms)
+                    Thread.sleep(backoffTime + randomFactor);
+
+                    // Double the backoff time for the next retry attempt (exponential backoff)
+                    backoffTime *= 2;
+
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                    logger.error("Retry interrupted during exponential backoff for Order ID: " + order.getId(), ie);
+                }
+            }
+        }
+        return false; // Fallback return if all retries fail
+    }
+}
+
+
+
+
+
+
+
+
+@Component
+public class NotificationService {
+    @EventListener(condition = "#event.username == 'admin'")
+    public void notifyAdmin(RegisteredEvent event) {
+        System.out.println("Special handling for admin user: " + event.getUsername());
+    }
+}
+@EventListener(condition = "#event.user=='arvind'")     // Equality
+@EventListener(condition = "#event.user!='arvind'")     // Inequality
+@EventListener(condition = "#event.age > 18")           // Greater than
+@EventListener(condition = "#event.age >= 18")          // Greater than or equal
+@EventListener(condition = "#event.age < 18")           // Less than
+@EventListener(condition = "#event.age <= 18")          // Less than or equal
+@EventListener(condition = "#event.user matches 'ar.*'") // Regex match
+@EventListener(condition = "#event.role.equals('ADMIN')") // Object equality
+
+// Logical operators
+@EventListener(condition = "#event.age > 18 and #event.user=='arvind'")  // AND
+@EventListener(condition = "#event.age > 18 or #event.user=='arvind'")   // OR
+@EventListener(condition = "!#event.isDeleted")                          // NOT
+
+// Collection operations
+@EventListener(condition = "#event.roles.contains('ADMIN')")             // Contains
+@EventListener(condition = "#event.tags.size() > 0")                     // Size check
+
+// Null checks
+@EventListener(condition = "#event.user != null")                        // Not null
+
+@EventListener(condition = "#event.user?.length() > 5")  // Safe navigation
+@EventListener(condition = "#event instanceof T(com.example.AdminEvent)") // Type check
+@EventListener(condition = "#event.timestamp > T(java.time.Instant).now().minusSeconds(3600)") // Time comparison
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public int calculateFare(PassengerType type) {
+    return switch (type) {
+        case CHILD -> 10;
+		//case CHILD, SENIOR -> 10;
+        case SENIOR -> {
+            System.out.println("Applying senior citizen discount");
+            int baseFare = 20;
+            int discount = 5;
+            yield baseFare - discount; // 🔥 yield to return the result
+        }
+        case ADULT -> 30;
+        case OFFICE_GOER -> 0;
+    };
+}
+
+
+
+
+
+ResponseEntity<User> response = restClient.get()
+    .uri("/users/{id}", 101)
+	.header("X-Custom-Header", "value")
+	.headers(headers -> headers.setBearerAuth("token123"))
+    .retrieve()
+    .toEntity(User.class);
+
+HttpHeaders headers = response.getHeaders();
+
+
+List<User> users = restClient.get()
+    .uri("/users")
+    .retrieve()
+    .body(new ParameterizedTypeReference<List<User>>() {});
+	
+restClient.get()
+    .uri("/users/{id}", 101)
+    .retrieve((request, response) -> {
+        if (response.getStatusCode().is4xxClientError()) {
+            throw new UserNotFoundException();
+        }
+        return response.body(User.class);
+    });	

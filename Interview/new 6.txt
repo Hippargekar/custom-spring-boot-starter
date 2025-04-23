@@ -1,0 +1,479 @@
+ Cognizant
+User Name
+  17530609       ---------        p6?Xiq@e
+p6?Xiq@e
+
+JAVA, J2EE, SPRING BOOT , MICROSERVICES, DESIGN PATTERNS, MYSQL, APACHE KAFKA, 
+REDIS, ELASTICSEARCH, LIQUIBASE, MAVEN, GITHUB, JUNIT5, MOCKITO, LOG4J
+
+https://www.linkedin.com/in/tech-pritam91
+Software Engineer II (Java Developer)
+Backend Java Developer 3
+Served notice, available immediately
+
+Understand functional requirements, translate them into code, and ensure code optimization and timely delivery
+Sound knowledge of Object-Oriented Programming (OOP) Patterns and Concepts.
+Hands-on knowledge of build tools like Maven, Gradle.
+
+
+Basic understanding of front-end technologies and platforms, such as JavaScript, HTML5, and CSS3
+
+Responsibilities:
+
+Design, develop, and deploy high-quality, scalable, and maintainable Java applications
+Collaborate with cross-functional teams to gather and define requirements
+Participate in all phases of the software development life cycle, including planning, design, coding, testing, and deployment
+Develop front-end applications using modern JavaScript frameworks like Angular/React
+Implement back-end solutions using Java frameworks such as Spring or Hibernate , JPA.
+Create and maintain database structures, optimizing performance and ensuring data integrity.
+Perform code reviews, identify and fix defects, and improve overall code quality.
+Stay updated with industry trends and emerging technologies to continuously enhance your skills and knowledge
+
+
+Strong hands-on experience with Java (8 or above).
+Expertise in Spring Boot and Spring Cloud for developing scalable, maintainable applications.
+Proficiency in Java unit testing frameworks like JUnit, Mockito.
+Solid understanding of relational databases (MySQL, PostgreSQL, or MS SQL).
+Experience in building and consuming RESTful APIs.
+Experience with implementation of Data structure and algorithms
+Good understanding of data structures & algorithms and their space & time complexities.
+Thorough understanding of Software Development Lifecycle and methodologies
+✅ Expertise in streaming data architectures and real-time processing
+✅ Solid knowledge of Kafka, REST APIs, and event-driven systems
+✅ Experience building scalable and resilient distributed systems
+Strong experience in JAVA, Spring boot, Microservices, SQL
+Experience on System Design & Distributed systems Architecture
+Hands-on Coding Experience Using Data Structures and Algorithms, Design Patterns and on Cloud Applications
+
+ 3-5+ years of hands on experience in Java/J2EE development. Experience with the implementation of a distributed, enterprise JAVA/J2EE solution is strongly preferred
+ Experience in JAVA/J2EE Frameworks such as Spring, hibernate is strongly preferred
+
+Career growth
+400710
+
+15,00,000
+9,50,000
+
+
+
+How would you best describe your ideal work environment?
+
+Collaborative and supportive – I enjoy working in a team-focused environment where communication, mentorship, and shared success are valued.
+
+Independent and flexible – I prefer having autonomy in my work, with the ability to manage my own schedule and tasks.
+
+Structured and process-driven – I do best in an organized environment with clear guidelines, expectations, and procedures.
+
+High-energy and fast-moving – I thrive in a workplace that is dynamic, innovative, and constantly evolving with new challenges.
+
+How do you handle deadlines and pressure?
+
+I thrive under pressure and always meet deadlines, no matter the cost.
+
+I manage pressure well and usually meet deadlines with effective time management.
+
+I handle pressure alright, but would prefer not to have urgent deadlines.
+
+I'd rather work at my own pace, in a less stressful environment.
+
+How do you communicate when you encounter a blocker that affects your work?
+
+I inform my team about the blocker only if it significantly delays my work.
+
+I try to resolve the blocker on my own before seeking help if necessary.
+
+I immediately inform my team and seek assistance to resolve the issue.
+
+How do you handle situations where you have too many tasks to complete on your own?
+
+I work extra hours to try and complete all tasks on time.
+
+I focus on the most urgent tasks.
+
+I seek help from my team to redistribute the workload.
+
+I inform my supervisor or team leader and ask for advice.
+
+How much are you willing to work when things are urgent?
+
+I'm willing to work long hours, including nights and weekends as necessary.
+
+I'm willing to work extra hours occasionally, but prefer to keep a work-life balance.
+
+I can work extra hours if given advance notice, but prefer to avoid nights and weekends.
+
+I prefer to stick to regular working hours, even when things are urgent.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- Expertise in core Java, XXX, data structures, and multithreading.
+
+3.8+ years of experience in software development, with expertise in Java and Spring Boot.
+4+ years of experience in Java Backend Development, Restful API, Spring Boot, Microservices, and MySQL.
+Strong understanding of Data Structures, Algorithms, Multithreading, Collections, and Design Patterns.
+Expertise in MySQL (SQL Queries, Stored Procedures, Functions, and Schema Design).
+Proficient in Apache Kafka for real-time data streaming and event-driven architecture.
+Experienced with Quartz Scheduler for building and managing scheduled, recurring tasks and automating backend workflows.
+Experience in JUnit and Mockito for unit testing.
+Experience in ORM frameworks such as Hibernate/JPA.
+Rich experience with Apache Maven as build and deployment tool.
+
+
+
+Proficient in Apache Kafka for real-time data streaming and Quartz Scheduler for job scheduling and automation.
+
+Java Backend Development
+Restful API
+Springboot
+Microservices
+Designs Patterns and Data Structures.
+
+Perform root cause analysis and implement preventative solutions to minimize recurring issues.
+Strong understanding of Software development life cycles, including design, development, testing and deployment.
+Develop and optimize database schemas, queries, and stored procedures for MSSQL.
+
+Proficiency in frontend technologies including React.js, HTML5, CSS3, and JavaScript.
+
+Design, develop, and maintain scalable and high-performance applications using Java and Spring Boot.
+Implement microservices architecture to enhance application modularity and scalability.
+Collaborate with product managers, architects, and other stakeholders to gather requirements and translate them into technical specifications.
+Conduct code reviews and ensure code quality through unit testing and best practices.
+Troubleshoot and resolve software defects and performance issues.
+Participate in the full software development lifecycle, including requirements analysis, design, development, testing, deployment, and support.
+Stay updated with the latest industry trends and technologies to continuously improve application performance and user experience.
+
+Strong proficiency in Java . Hands-on experience with Spring Boot
+Good understanding of microservices architecture .
+- Collaborate with cross-functional teams to analyze business requirements and design software solutions that meet business process and application requirements.
+- Participate in code reviews, ensuring that code is well-designed, maintainable, and scalable.
+- Troubleshoot and debug software issues, identifying and resolving defects in a timely manner.
+
+
+
+I’ve updated my profile. If there’s anything still pending from my side, please let me know—I’ll make sure to update it as soon as possible.
+Key Responsibilities
+1. Design and Development: Design, develop, and deploy scalable microservices using Java and Spring Boot.
+2. Microservices Architecture: Participate in the design and implementation of microservices architecture, ensuring scalability, reliability, and performance.
+3. API Development: Develop RESTful APIs, ensuring security, scalability, and performance.
+4. Cloud Native Development: Develop cloud-native applications, leveraging cloud services and containerization (Docker, Kubernetes).
+5. Troubleshooting: Troubleshoot and resolve complex technical issues in microservices-based systems.
+
+
+Technical Skills
+1. Java: Strong proficiency in Java programming language.
+2. Spring Boot: Experience with Spring Boot framework for building microservices.
+3. Microservices Architecture: Knowledge of microservices architecture patterns and best practices.
+4. Cloud Platforms: Experience with cloud platforms (AWS, GCP, Azure).
+5. Containerization: Knowledge of containerization technologies (Docker, Kubernetes).
+
+
+Key Responsibilities:
+
+Develop and maintain scalable backend applications using Java, J2EE, Spring Boot, and Hibernate.
+Design and implement RESTful APIs and microservices architecture.
+Write optimized SQL queries and manage data in Oracle Database.
+Collaborate with front-end developers, QA engineers, and other stakeholders to deliver high-quality software.
+Troubleshoot and debug issues in production and non-production environments.
+Ensure code quality, security, and performance through best practices and code reviews.
+Proficiency in Oracle Database, including writing complex queries, procedures, and performance tuning.
+Help troubleshoot database issues under the guidance of senior DBAs.
+Work and collaborate in multi-disciplinary Agile teams, adopting Agile spirit, methodology and tools
+Working knowledge of unit testing.
+Working knowledge of object-oriented software design.
+
+
+
+Experience in Java development with Spring Boot and CI/CD pipeline
+Design, develop, test, deploy, and maintain Java applications using microservices architecture
+4+ years of experience in Java/J2EE, Springboot, and Microservices
+Develop and maintain Java Springboot Microservices
+Experience with Java8, Spring Boot, and Microservices
+Develop and maintain Java applications using Spring Boot and Microservices architecture
+
+
+Mandatory Skills : Java, Spring Boot, Microservices, Data Structures, Algorithms, Design Patterns, OOP, and Multithreading.
+- Exposure to building and consuming RESTful APIs and working with microservices architecture.
+
+Data Structures & Algorithms: Practical knowledge of data structures and algorithms for performance optimization.
+ 
+
+Multithreading & Concurrency: Solid understanding of multithreading concepts and the ability to implement them to enhance application performance.
+
+Design, develop, and maintain robust backend services using Java and Spring Boot.
+Implement microservices architecture with Spring Cloud for distributed systems.
+Write unit and integration tests to ensure code quality and coverage.
+Work with SQL databases such as MySQL, PostgreSQL, or MS SQL for data modeling, querying, and performance tuning.
+Collaborate with cross-functional teams to gather requirements and deliver high-quality solutions.
+Participate in code reviews, contribute to architectural decisions, and drive best practices.
+
+Proficient in Java and familiar with its ecosystems (Spring, Hibernate).
+Experience with software development methodologies and tools such as Agile, Scrum, Git, JIRA, and Confluence. 
+Lead the design and implementation of distributed platforms using Spring Boot and Microservices.
+
+1 to 3 years of hands-on professional experience working with cutting-edge technologies in enterprise applications.
+Design Patterns and Principles,
+Facilitate root cause analysis of the system issues and problem statement
+3+ years of hands-on experience in Java with Spring & Spring Boot, RESTful Web Services, and Microservices Architecture
+Develop and maintain enterprise applications, ensuring code integrity and responsiveness, and collaborate with the engineering team to launch new features
+
+
+
+Collaborate with business analysts and other stakeholders to understand requirements and translate them into technical solutions.
+Implement unit testing and ensure code quality through best practices.
+Troubleshoot and resolve issues in development and production environments.
+Support system deployments and conduct post-implementation reviews.
+
+Strong proficiency in Java development with a minimum of 6+ years of experience.
+bullet icon
+Solid understanding of unit testing frameworks and best practices.
+Ability to write efficient SQL queries and understand database structures.
+Strong analytical and problem-solving skills with experience in debugging and troubleshooting.
+Excellent communication skills and ability to work in a collaborative team environment.
+Deep understanding of database systems, with expertise in PL/SQL, including stored procedures and complex SQL joins.
+- Strong understanding of Java, J2EE, and related frameworks (Spring, Hibernate, etc.).
+
+Experience in Kubernetes operators, Grafana, Prometheus
+Solid understanding of relational database concepts and experience using MySQL (or similar)
+Expertise in application development using Java, J2EE, Spring, Spring boot, Hibernate, web services standards and related technologies ( JSON, REST)
+debugging, and root cause analysis
+Knowledge and working experience in Agile Methodologies
+Core Java, Java8+, Spring Boot, Spring Security, Spring MVC, Design patterns. Microservices, RESTful API, oAUTH2, JPA, Logging
+- Logical/Analytical skills. Thorough understanding of OOPS concepts, Design principles and implementation of different type of Design patterns.
+
+
+
+- Integrate with messaging systems like Kafka for event-driven architecture
+- Implement distributed systems patterns using Netflix OSS/Spring Cloud
+- Develop robust backend services using Java, Spring Boot, and Microservices
+- Develop and maintain scalable Java applications using Spring Boot and Microservices architecture.
+- Troubleshoot and resolve application issues in development and production environments.
+- Work in an Agile/Scrum development environment and meet delivery timelines
+- Effective skills in writing quality, re-usable, scalable, and test-supported code.
+Work closely with cross-functional teams to integrate new features and enhance existing functionalities.
+• Understanding of software development lifecycle and Agile methodologies.
+• Strong proficiency in Java and Java frameworks such as Spring and Hibernate.
+strong knowledge of Spring framework and microservices architecture
+Design, develop, and maintain scalable Java applications; 
+implement microservices architecture; 
+develop RESTful APIs; 
+optimize application performance
+
+Write, test, and optimize complex PL/SQL queries and stored procedures for efficient data retrieval.
+Create and manage database designs, including joins, relationships, and stored procedures.
+Collaborate with the front-end team to integrate user-facing elements with server-side logic.
+Optimize database performance by implementing efficient SQL queries and indexing.
+Design, develop, and manage the complete lifecycle of software development, from concept to deployment.
+Troubleshoot and resolve software defects, and proactively implement fixes and enhancements.
+
+Design, develop, test, and deploy high-quality Java applications, adhering to best practices and coding standards.
+Apply SOLID principles and design patterns to ensure maintainability, scalability, and performance of software solutions.
+Extensive experience with ReactJS, React Testing Library, Redux, JavaScript(ES6+), HTML5 and CSS3 its core principles.
+
+    HashMap<String, Object> result = employeeList.stream().collect( 
+              Collectors.teeing(
+                  Collectors.filtering(e -> e.getSalary() > 200, Collectors.toList()),
+                  Collectors.filtering(e -> e.getSalary() > 200, Collectors.counting()),
+                  (list, count) -> {
+                    HashMap<String, Object> map = new HashMap();
+                    map.put("list", list);
+                    map.put("count", count);
+                    return map;
+                  }
+              ));
+			  
+			   BigDecimal totalPrice = cartRows.stream()
+                                       .collect(Collectors.reducing(
+                                           BigDecimal.ZERO,           // Identity value (initial sum)
+                                           CartRow::getRowPrice,      // Function to extract price from CartRow
+                                           BigDecimal::add            // Accumulator to add the prices
+                                       ));
+
+12+ Years of Hands-on Software development experience. 6 + years in Software and microservices architecture.
+• be responsible for the analysis, design, development and delivery of software solutions.
+
+• write code to build and enhance applications/services and promote code-reviews, secure code, whilst adhering to standards 
+and best practices resulting in the deliver high-quality artifacts through to production.
+
+All About You:
+• Excellent communication skills with the ability to communicate with all levels of management.
+• Hands on experience in building complex and highly scalable and performing systems
+• Solid understanding and hands-on experience in Java, J2EE, Spring Boot, and RESTful web services.
+• Solid understanding and experience integrating web services
+• Exposure to building cloud ready applications (microservices)
+
+Integrate third-party APIs and services.
+
+
+
+	
+
+Application for Java Developer Position - Pritam Hippargekar.	
+Dear Hiring Manager,
+I am excited to apply for the Java Developer position at [continual engine]. 
+With 3.8 years of extensive experience in all phases of software development life cycle.
+I am eager to contribute my expertise in Java technologies and agile methodologies to drive innovative solutions at [continual engine].
+
+In my previous role at Viral Technologies Pvt. Ltd, I gained hands-on experience in backend development, 
+Utilizing Java, Spring Boot, Spring Cloud and Hibernate/JPA and Design Patterns to design and implementations of 
+a microservices architecture. I successfully collaborated with cross-functional teams to deliver high-quality software solutions on time. 
+Additionally, I consistently demonstrated strong troubleshooting skills and a deep understanding of system architecture to improve application performance and scalability.
+
+I am confident that I have the skills and experience that you are looking for in a Java Developer. 
+I would welcome the opportunity to discuss how my skills and experience align with your team’s needs and how I can contribute to your projects.
+
+Please find attached my resume for your further review of my skills and work history.
+Thank you for considering my application. I look forward to the possibility of contributing to your esteemed team.
+
+Best regards,
+Pritam Hippargekar,
+(Mobile) 8806298290
+(Email) tech.pritam91@gmail.com
+(LinkedIn) https://www.linkedin.com/in/tech-pritam91
+
+
+
+
+Experience with the Agile methodology, contributing to sprint planning, reviews, and retrospectives.
+Strong experience with Java, Spring Boot, and microservices architecture.
+
+Knowledge of Agile methodologies and tools (e. g., Jira).
+
+
+Strong proficiency in Java, Micro services, Spring boot, Spring Framework, RESTful APIs, Hibernate.
+Ability to quickly learn new technologies and apply them as and when needed
+
+Strong problem-solving and analytical skills, with a passion for tackling complex technical challenges.
+Strong ability to effectively manage databases including schema design, queries, and optimizations.
+Solid understanding of software design patterns, architectural design patterns and best practices.
+Solid understanding of data structures, algorithms, and software design principles.
+
+Strong understanding of elasticsearch engine, for indexes mapping, data modelling, and extracting documents through querying.
+Strong expertise in Elasticsearch, including index mapping, data modeling, and querying for efficient document retrieval and analysis.
+
+
+Skill for writing reusable Java libraries
+Knowhow of Java concurrency patterns
+
+- Proven experience as a Java Developer with a focus on Microservices.
+
+- Design, develop, and maintain Java-based applications and microservices.
+- Participate in agile development cycles and contribute to sprint planning, standups, and retrospectives.
+- Implement server-side logic in Java using Java-based framework Spring Boot
+-
+- Write clean, maintainable, and efficient code following best practices and design patterns.
+- Develop and integrate APIs, ensuring smooth and secure data exchanges.
+- Strong proficiency in J2EE, Spring Boot, and Microservices architecture.
+scalable, secure, and high-quality software
+Contribute to all stages of software development lifecycle
+Proficiency in Java, with a good understanding of its ecosystems
+- Experience in working with version control systems, such as Git.
+Implement microservices architecture using Spring Boot.
+The ideal candidate will have strong knowledge of Java, Spring Boot, Kafka, and modern software design principles.
+Utilize Kafka for building event-driven microservices.
+
+Hands on experience in Quartz Scheduler framework.
+
+Fluent Interface, Template Method , Strategy
+
+
+Develop robust and scalable Java applications using Java 8+ and the Spring Framework (Spring MVC, Spring Boot).
+Design, develop, and maintain high-performance Java applications, ensuring robust and scalable solutions.
+Stay informed about emerging technologies and techniques, encouraging innovation and continuous improvement.
+
+Collaborate with business analysts to understand requirements and translate them into technical specifications.
+to understand business requirements and translate them into efficient and scalable software solutions.
+design, develop, test, deploy, support and maintain high-quality software applications using industry best practices and modern technologies.
+own issues, including initial troubleshooting, identification of root cause and issue resolution / escalation.
+
+write clean and maintainable code that adheres to industry coding standards and contributes to the overall stability of our systems.
+participate in code reviews and provide constructive feedback to team members to ensure code quality and promote knowledge sharing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @MultiField(
+      mainField = @Field(type = FieldType.Keyword),
+      otherFields = {
+          @InnerField(type = FieldType.Text, suffix = "ngrams", analyzer = "ik_max_word", searchAnalyzer = "ik_smart")
+      })
+    private String fullName;
+    @Field(type = FieldType.Keyword)
+    private List<String> urls;
+    @Field(type = FieldType.Boolean)
+    private Boolean isVisible;
+
+    @Field(type = FieldType.Text,analyzer = "ik_max_word", searchAnalyzer = "ik_smart", fielddata = true, store = false)
+    private String userName;
+    @Field(type = FieldType.Double)
+    private Double price;
+	@Field(type = FieldType.Keyword)
+    private String category;
+    @Field(type = FieldType.Date, store = true, format = DateFormat.custom, pattern ="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date birthday;
+	
+@Document(indexName = "#{@environment.getProperty('app.es-indexes.witake-media')}", writeTypeHint = WriteTypeHint.FALSE, createIndex = false)	
+https://moldstud.com/articles/p-understanding-nested-and-object-data-structures-in-elasticsearch
+{
+  'mappings': {
+    'properties': {
+      'user': {
+        'type': 'object',
+        'properties': {
+          'name': {
+            'type': 'text'
+          },
+          'age': {
+            'type': 'integer'
+          }
+        }
+      },
+      'comments': {
+        'type': 'nested',
+        'properties': {
+          'commenter': {
+            'type': 'text'
+          },
+          'message': {
+            'type': 'text'
+          },
+          'date': {
+            'type': 'date'
+          }
+        }
+      }
+    }
+  }
+}

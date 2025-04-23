@@ -1,0 +1,259 @@
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-impl</artifactId>
+    <version>0.12.3</version>
+    <scope>runtime</scope>
+</dependency>
+
+<dependency>
+    <groupId>io.jsonwebtoken</sId>
+    <artifactId>jjwt-api</artifactId>
+    <version>0.12.3</version>
+</dependency>
+
+<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt-jackson</artifactId>
+    <version>0.12.3</version>
+    <scope>runtime</scope>
+</dependency>
+
+import java.io.IOException;
+
+@Component
+public class JwtFilter extends OncePerRequestFilter {
+    @Autowired
+    private JwtService jwtService;
+    @Autowired
+    private UserInfoService userInfoService;
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        String authHeader = request.getHeader("Authorization");
+        String token= null;
+        String userName = null;
+        if(authHeader !=null && authHeader.startsWith("Bearer")){
+            token = authHeader.substring(7);
+            userName =jwtService.extractUserName(token);
+        }
+        if(userName !=null && SecurityContextHolder.getContext().getAuthentication()==null){
+            UserDetails userDetails = userInfoService.loadUserByUsername(userName);
+            if(jwtService.validateToken(token,userDetails)){
+                UsernamePasswordAuthenticationToken authToken =  new UsernamePasswordAuthenticationToken(userDetails,null,userDetails.getAuthorities());
+                authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContextHolder.getContext().setAuthentication(authToken);
+            }
+        }
+        filterChain.doFilter(request,response);
+    }
+}
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+public class UserInfoImpl implements UserDetails {
+	private static final long serialVersionUID = 1L;
+
+	private String id;
+
+	private String username;
+
+	private String email;
+
+	@JsonIgnore
+	private String password;
+
+	private Collection<? extends GrantedAuthority> authorities;
+
+	public UserInfoImpl(String id, String username, String email, String password,
+			Collection<? extends GrantedAuthority> authorities) {
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.authorities = authorities;
+	}
+
+	public static UserDetailsImpl build(User user) {
+		List<GrantedAuthority> authorities = new ArrayList<>();
+
+		return new UserDetailsImpl(
+				user.getId(), 
+				user.getUsername(), 
+				user.getEmail(),
+				user.getPassword(), 
+				authorities);
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return authorities;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	@Override
+	public String getPassword() {
+		return password;
+	}
+
+	@Override
+	public String getUsername() {
+		return username;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		UserInfoImpl user = (UserInfoImpl) o;
+		return Objects.equals(id, user.id);
+	}
+}
+
+@Configuration
+@EnableWebSecurity
+@EnableMethodSecurity
+public class SecurityConfiguration {
+	
+	@Autowired
+	private AuthEntryPoint authEntryPoint;
+
+	@Autowired
+	private UserDetailsService userDetailsService;
+
+	@Autowired
+	private RequestFilter requestFilter;
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable()
+                .exceptionHandling().authenticationEntryPoint(authEntryPoint).and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/api/test/**").permitAll()
+                .anyRequest().authenticated();
+				
+http.exceptionHandling( exception -> exception
+                .authenticationEntryPoint(authenticationEntryPoint));
+				
+        http.addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class);
+
+        http.authenticationProvider(authenticationProvider());
+  http.headers(headers -> headers
+                .frameOptions(frameOptions -> frameOptions
+                        .sameOrigin()
+                )
+        );
+        return http.build();
+    }
+https://evoila.com/blog/spring-boot-3-jwt-authentication-leveraging-spring-securitys-support/
+    @Bean
+    WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring().requestMatchers("/images/**");
+    }
+
+    @Bean
+    DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+
+        return authProvider;
+    }
+
+    @Bean
+    AuthenticationManager authenticationManager(AuthenticationConfiguration authConfiguration) throws Exception {
+        return authConfiguration.getAuthenticationManager();
+    }
+}
+
+@Component
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
+
+    @Autowired
+    private JwtTokenProvider jwtTokenProvider;
+
+    private UserDetailsService userDetailsService;
+
+    //Constructor
+    public JwtAuthenticationFilter(JwtTokenProvider jwtTokenProvider, UserDetailsService userDetailsService) {
+        this.jwtTokenProvider = jwtTokenProvider;
+        this.userDetailsService = userDetailsService;
+    }
+
+
+    // This method is executed for every request intercepted by the filter.
+    //And, it extract the token from the request header and validate the token.
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
+
+        // Get JWT token from HTTP request
+        String token = getTokenFromRequest(request);
+
+        // Validate Token
+        if(StringUtils.hasText(token) && jwtTokenProvider.validateToken(token)){
+            // get username from token
+            String username = jwtTokenProvider.getUsername(token);
+
+            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+                    userDetails,
+                    null,
+                    userDetails.getAuthorities()
+            );
+
+            authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
+            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        }
+
+        filterChain.doFilter(request, response);
+    }
+
+    // Extract the token
+    private String getTokenFromRequest(HttpServletRequest request){
+        String bearerToken = request.getHeader("Authorization");
+
+        if(StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")){
+            return bearerToken.substring(7, bearerToken.length());
+        }
+
+        return null;
+    }
+}
